@@ -1,4 +1,23 @@
 # mail
-silly project :3 
 
-omg hiiiiii
+
+Title
+
+
+
+Authors
+
+
+
+Description
+
+
+
+Purpose of the program
+
+
+
+Todolist
+
+-buy domain
+-set up email server
