@@ -1,5 +1,4 @@
-# mail
-
+# Account maker
 
 ## Title: 
 
@@ -23,7 +22,10 @@ If we can create thousands of accounts that complete the email verification, the
 
 ## To do list:
 
--buy domain
--set up email server
--make a python script that interfaces with the email server
--I don't know the exact specifics yet, so idk, we'll figure it out :3
+- buy domain
+
+- set up email server
+
+- make a python script that interfaces with the email server
+
+- I don't know the exact specifics yet, so idk, we'll figure it out :3
