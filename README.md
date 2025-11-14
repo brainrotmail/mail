@@ -1,15 +1,4 @@
-# Account maker
-
-## Title: 
-
-Account maker  (title needs be be re-worked cuz this is cooked)
-
-## Authors:
-
-Iliya
-
-Tykhon
-
+# BrainrotMail
 
 ## Description:
 
@@ -22,10 +11,15 @@ If we can create thousands of accounts that complete the email verification, the
 
 ## To do list:
 
-- buy domain
+[x] buy domain
 
-- set up email server
+[ ] set up email server
 
-- make a python script that interfaces with the email server
+[ ] make a python script that interfaces with the email server
 
-- I don't know the exact specifics yet, so idk, we'll figure it out :3
+[ ] I don't know the exact specifics yet, so idk, we'll figure it out :3
+
+
+
+
+### spoonegg was here
