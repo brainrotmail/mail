@@ -13,13 +13,15 @@ If we can create thousands of accounts that complete the email verification, the
 
 [x] buy domain
 
-[ ] set up email server
+[ ] set up a self hosted email server
 
-[ ] make a python script that interfaces with the email server
+[ ] make a script that generates emails on our email server 
 
-[ ] I don't know the exact specifics yet, so idk, we'll figure it out :3
+[ ] make the script also read emails from different inboxes
+
+[ ] make the script run the desired (verification) link that it detects in the inbox
 
 
 
 
-### spoonegg was here
+### spoonegg was sigma
