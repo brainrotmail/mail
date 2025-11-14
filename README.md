@@ -12,7 +12,7 @@ erm this is a cool and non nefarious project actually
 
 [x] buy domain
 
-[ ] set up email server
+[ ] set up a self hosted email server
 
 [ ] make a script that generates emails on our email server 
 
