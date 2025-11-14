@@ -6,7 +6,8 @@ Generates email accounts using a self-hosted email server, signs up for a websit
 
 ## Purpose of the program:
 
-erm this is a cool and non nefarious project actually
+Giveaway websites typically require contestants to follow the person or company hosting the giveaway on social media, like their posts, or sign up for their promotional newsletter. Some also award additional entries for every friend you refer.
+If we can create thousands of accounts that complete the email verification, then we can significantly increase our chances of winning.
 
 ## To do list:
 
@@ -21,4 +22,4 @@ erm this is a cool and non nefarious project actually
 
 
 
-### spoonegg was sigma
+### spoonegg was here
