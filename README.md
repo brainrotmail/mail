@@ -6,8 +6,14 @@ Generates email accounts using a self-hosted email server, signs up for a websit
 
 ## Purpose of the program:
 
-Giveaway websites typically require contestants to follow the person or company hosting the giveaway on social media, like their posts, or sign up for their promotional newsletter. Some also award additional entries for every friend you refer.
-If we can create thousands of accounts that complete the email verification, then we can significantly increase our chances of winning.
+This program is able to generate fully usable email accounts and pass the verification process for any website by running the verification link sent to it's inbox.
+Here's are some potential uses for this wonderful and TOS following program that is supposed to be used for educational purpuses only:
+
+- sign up a lot of accounts to some website's newsletter to participate in some giveaway they may be running
+- spam someone from many email acccounts
+- make a lot of alternative accounts for any website
+- refer many fake users to a givaway that rewards you extra entries for each referral
+
 
 ## To do list:
 
