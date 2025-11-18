@@ -6,6 +6,5 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bs4>=0.0.2",
-    "imapclient>=3.0.1",
-    "urlextract>=1.9.0",
+    "imap-tools>=1.11.0",
 ]
