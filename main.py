@@ -1,7 +1,8 @@
 import getpass
 import time
 from typing import Iterator
-import requests
+# import requests
+import webbrowser
 
 from bs4 import BeautifulSoup
 from imap_tools import AND, MailBox
@@ -62,9 +63,18 @@ def extract_urls(body: str) -> set:
         urls.add(link["href"])
     return urls
 
+# def open_urls(urls):
+#     for i in urls:
+#         if i.startswith("https://"):              # I can explain later, but I had to remove it and use webbrowser [insert weary emoji]
+#             requests.get(i)
+
 def open_urls(urls):
     for i in urls:
-        requests.get(i)
+        if i.startswith("https://"):
+            webbrowser.open(i)
+
+
+
 
 if __name__ == "__main__":
     main()
