@@ -14,11 +14,6 @@ FOLDER = "INBOX"
 
 
 def main():
-    # mailbox = MailBox(HOST)
-    # mailbox.login(USERNAME, PASSWORD, FOLDER)
-    # inbox_dump = mailbox.fetch(AND(all=True))
-
-    # process_mail(inbox_dump)
     poll_mailserver()
     pass
 
@@ -70,14 +65,6 @@ def extract_urls(body: str) -> set:
 def open_urls(urls):
     for i in urls:
         requests.get(i)
-
-
-# so i need it to:
-# - detect new email (in loop? IDLE?)
-# - decide if email plaintext or hmtl
-# - extract URLs
-# - send http requests to all/some
-
 
 if __name__ == "__main__":
     main()
