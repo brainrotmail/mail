@@ -1,17 +1,21 @@
-import getpass
+# import getpass
+import os
 import time
-from typing import Iterator
+
 # import requests
 import webbrowser
+from typing import Iterator
 
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from imap_tools import AND, MailBox
 from imap_tools.message import MailMessage
 
-HOST = "imap.gmx.org"
-USERNAME = input("Username: ")
-PASSWORD = getpass.getpass()
-FOLDER = "INBOX"
+load_dotenv()
+HOST = os.getenv("MAIL_HOST")
+USERNAME = os.getenv("MAIL_USERNAME")
+PASSWORD = os.getenv("MAIL_PASSWORD")
+FOLDER = os.getenv("MAIL_FOLDER")
 
 
 def main():
@@ -63,17 +67,17 @@ def extract_urls(body: str) -> set:
         urls.add(link["href"])
     return urls
 
+
 # def open_urls(urls):
 #     for i in urls:
 #         if i.startswith("https://"):              # I can explain later, but I had to remove it and use webbrowser [insert weary emoji]
 #             requests.get(i)
 
+
 def open_urls(urls):
     for i in urls:
         if i.startswith("https://"):
             webbrowser.open(i)
-
-
 
 
 if __name__ == "__main__":
