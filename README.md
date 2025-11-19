@@ -28,6 +28,24 @@ Here's are some potential uses for this wonderful and TOS following program that
 [ ] make the script run the desired (verification) link that it detects in the inbox
 
 
+# Setup instructions:
+Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/):
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
+Clone repo:
+```sh
+git clone https://github.com/brainrotmail/mail && cd mail
+```
 
-### spoonegg was sigma
+Set environment variables:
+```sh
+cp ./.env.example ./.env
+# edit the .env 
+```
+
+Run project:
+```sh
+uv run main.py
+```
