@@ -23,20 +23,32 @@ def main():
 
 
 def poll_mailserver():
-    while True:
+    # "adapted" from here: https://github.com/ikvk/imap_tools/blob/master/examples/idle.py#L25
+    done = False
+    connection_start_time = time.monotonic()
+    connection_live_time = 0.0
+    while not done:
         try:
             mb = MailBox(HOST)
             with mb.login(USERNAME, PASSWORD, FOLDER) as mailbox:
-                inbox_dump = mailbox.fetch(AND(seen=False))
-
-                process_mail(inbox_dump)
+                print("@@ new connection", time.asctime())
+                while connection_live_time < 29 * 60:
+                    try:
+                        responses = mailbox.idle.wait(timeout=3 * 60)
+                        print(time.asctime(), "IDLE responses:", responses)
+                        if responses:
+                            inbox_dump = mailbox.fetch(AND(seen=False))
+                            process_mail(inbox_dump)
+                    except KeyboardInterrupt:
+                        print("~KeyboardInterrupt")
+                        done = True
+                        break
+                    connection_live_time = time.monotonic() - connection_start_time
 
         except Exception as e:
             print(f"Got error: {e}; retrying in 15s.")
             time.sleep(15)
             continue
-
-        time.sleep(60)
 
 
 def process_mail(email_bundle: Iterator[MailMessage]):
