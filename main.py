@@ -1,4 +1,5 @@
 import getpass
+import time
 from typing import Iterator
 
 from bs4 import BeautifulSoup
@@ -12,11 +13,30 @@ FOLDER = "INBOX"
 
 
 def main():
-    mailbox = MailBox(HOST)
-    mailbox.login(USERNAME, PASSWORD, FOLDER)
-    inbox_dump = mailbox.fetch(AND(all=True))
+    # mailbox = MailBox(HOST)
+    # mailbox.login(USERNAME, PASSWORD, FOLDER)
+    # inbox_dump = mailbox.fetch(AND(all=True))
 
-    process_mail(inbox_dump)
+    # process_mail(inbox_dump)
+    poll_mailserver()
+    pass
+
+
+def poll_mailserver():
+    while True:
+        try:
+            mb = MailBox(HOST)
+            with mb.login(USERNAME, PASSWORD, FOLDER) as mailbox:
+                inbox_dump = mailbox.fetch(AND(seen=False))
+
+                process_mail(inbox_dump)
+
+        except Exception as e:
+            print(f"Got error: {e}; retrying in 15s.")
+            time.sleep(15)
+            continue
+
+        time.sleep(60)
 
 
 def process_mail(email_bundle: Iterator[MailMessage]):
