@@ -1,6 +1,7 @@
 import getpass
 import time
 from typing import Iterator
+import requests
 
 from bs4 import BeautifulSoup
 from imap_tools import AND, MailBox
@@ -56,7 +57,7 @@ def process_mail(email_bundle: Iterator[MailMessage]):
         body = msg.html or msg.text or ""
 
         print(extract_urls(body))
-        print("*** === ***")
+        open_urls(extract_urls(body))
 
 
 def extract_urls(body: str) -> set:
@@ -65,6 +66,10 @@ def extract_urls(body: str) -> set:
     for link in soup.find_all("a", href=True):
         urls.add(link["href"])
     return urls
+
+def open_urls(urls):
+    for i in urls:
+        requests.get(i)
 
 
 # so i need it to:
