@@ -3,10 +3,10 @@ import getpass
 from bs4 import BeautifulSoup
 from imap_tools import AND, MailBox
 
-HOST = "imap.mailbox.org"
+HOST = "imap.gmx.org"
 USERNAME = input("Username: ")
 PASSWORD = getpass.getpass()
-FOLDER = "BRAINROT"
+FOLDER = "INBOX"
 
 
 def main():
@@ -21,6 +21,7 @@ def main():
             urls.add(link["href"])
 
         print(urls)
+        print("*** === ***")
 
 
 if __name__ == "__main__":
