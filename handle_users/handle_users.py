@@ -2,10 +2,6 @@ import secrets
 import string
 
 
-def generate_user() -> tuple:
-    return (generate_username(), generate_password())
-
-
 def generate_username() -> str:
     alphabet = string.ascii_letters
     username = "".join(secrets.choice(alphabet) for i in range(8))
@@ -24,10 +20,3 @@ def generate_password() -> str:
             break
     return password
 
-
-def save_user():
-    password_store = open("passwords.sekrit", "a")
-    password_store.write(":".join(generate_user()))
-
-
-save_user()
