@@ -10,22 +10,22 @@ headers = {
 }
 
 website = 'https://tinycc.com'
-
-for i in range(10):
-    username = f"{name}{i}"
-    email = f'{name}{i}@cutesillymeowmeow.xyz'
-    password = 'test'
+def create():
+    for i in range(4):
+        username = f"{name}{i}"
+        email = f'{name}{i}@cutesillymeowmeow.xyz'
+        password = 'test'
     
-    data = {
-        'username': username,
-        'email': email,
-        'password': password,
-    }
+        data = {
+            'username': username,
+            'email': email,
+            'password': password,
+        }
     
-    response = requests.post('https://tinycc.com/tiny/signup', cookies=cookies, headers=headers, data=data)
-    
+        response = requests.post('https://tinycc.com/tiny/signup', cookies=cookies, headers=headers, data=data)
+        print(username, email, password, sep = " ")
     # logging (we need to move it to a differt script later)
-    with open('log.txt', 'a', encoding='utf-8') as f:
-        f.write(f"{website} - {email} - {password}\n")
+    # with open('log.txt', 'a', encoding='utf-8') as f:
+    #     f.write(f"{website} - {email} - {password}\n")
     
-    time.sleep(1)
+        time.sleep(1)
