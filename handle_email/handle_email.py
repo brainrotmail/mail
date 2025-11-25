@@ -34,16 +34,11 @@ def poll_mailserver(HOST, USERNAME, PASSWORD, FOLDER):
             with mb.login(USERNAME, PASSWORD, FOLDER) as mailbox:
                 print("@@ new connection", time.asctime())
                 while connection_live_time < 29 * 60:
-                    try:
-                        responses = mailbox.idle.wait(timeout=3 * 60)
-                        print(time.asctime(), "IDLE responses:", responses)
-                        if responses:
-                            inbox_dump = mailbox.fetch(AND(seen=False))
-                            process_mail(inbox_dump)
-                    except KeyboardInterrupt:
-                        print("~KeyboardInterrupt")
-                        done = True
-                        break
+                    responses = mailbox.idle.wait(timeout=3 * 60)
+                    print(time.asctime(), "IDLE responses:", responses)
+                    if responses:
+                        inbox_dump = mailbox.fetch(AND(seen=False))
+                        process_mail(inbox_dump)
                     connection_live_time = time.monotonic() - connection_start_time
 
         except Exception as e:
