@@ -24,8 +24,8 @@ def create():
     
         response = requests.post('https://tinycc.com/tiny/signup', cookies=cookies, headers=headers, data=data)
         print(username, email, password, sep=", ")
-    # logging (we need to move it to a differt script later)
-    # with open('log.txt', 'a', encoding='utf-8') as f:
-    #     f.write(f"{website} - {email} - {password}\n")
+        
+        with open('log.txt', 'a', encoding='utf-8') as f:        #this thing does the logging, idk if I should move it somewhere else
+            f.write(f"{website} - {email} - {password}\n")
     
         time.sleep(1)
