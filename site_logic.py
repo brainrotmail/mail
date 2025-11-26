@@ -7,11 +7,11 @@ import handle_users.handle_users as userman
 
 class Service:
     def __init__(
-        self, signup_url: str, signup_headers: dict, email_domain: str, uses_code: bool
+        self, signup_url: str, signup_headers: dict, sender_email: str, uses_code: bool
     ):
         self.signup_url = signup_url
         self.signup_headers = signup_headers
-        self.email_domain = email_domain
+        self.sender_email = sender_email
         self.uses_code = uses_code
 
     def verify(self, urls: set):
@@ -23,7 +23,7 @@ class Service:
 
 
 class Website_tinycc(Service):
-    def signup(self, receiving_domain):
+    def signup(self, receiving_domain: str):
         signup_url = self.signup_url
         headers = self.signup_headers
 
@@ -47,6 +47,8 @@ tinycc = Website_tinycc(
     signup_headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
     },
-    email_domain="tinycc.com",
+    sender_email="noreply@tinycc.com",
     uses_code=False,
 )
+
+services: set = {tinycc}

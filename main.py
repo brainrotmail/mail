@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from handle_email import handle_email
+import handle_email.handle_email as handle_email
 
 
 def main():

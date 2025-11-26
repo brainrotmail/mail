@@ -53,6 +53,8 @@ def process_mail(email_bundle: Iterator[MailMessage]):
     for msg in email_bundle:
         body = msg.html or msg.text or ""
 
+        # TODO: call functions depending on sender
+
         print(extract_urls(body))
         # open_urls(extract_urls(body))
         site_logic.tinycc.verify(extract_urls(body))
