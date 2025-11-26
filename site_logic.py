@@ -1,5 +1,3 @@
-import webbrowser
-
 import requests
 
 import handle_users.handle_users as userman
@@ -7,25 +5,27 @@ import handle_users.handle_users as userman
 
 class Service:
     def __init__(
-        self, signup_url: str, signup_headers: dict, sender_email: str, uses_code: bool
+        self, signup_url: str, headers: dict, sender_email: str, uses_code: bool
     ):
         self.signup_url = signup_url
-        self.signup_headers = signup_headers
+        self.headers = headers
         self.sender_email = sender_email
         self.uses_code = uses_code
 
-    def verify(self, urls: set):
+    def verify(self, urls: set, headers):
         if not self.uses_code:
             for i in urls:
-                webbrowser.open(i)
+                response = requests.get(i, headers=headers)
         else:
             pass
+
+
 
 
 class Website_tinycc(Service):
     def signup(self, receiving_domain: str):
         signup_url = self.signup_url
-        headers = self.signup_headers
+        headers = self.headers
 
         username = userman.generate_username
         password = userman.generate_password
@@ -44,7 +44,7 @@ class Website_tinycc(Service):
 
 tinycc = Website_tinycc(
     signup_url="https://tinycc.com/tiny/signup",
-    signup_headers={
+    headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
     },
     sender_email="noreply@tinycc.com",
