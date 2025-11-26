@@ -1,10 +1,12 @@
 import time
-import webbrowser
 from typing import Iterator
 
 from bs4 import BeautifulSoup
-from imap_tools import AND, MailBox
+from imap_tools.mailbox import MailBox
 from imap_tools.message import MailMessage
+from imap_tools.query import AND
+
+import site_logic
 
 
 def extract_code():
@@ -52,10 +54,5 @@ def process_mail(email_bundle: Iterator[MailMessage]):
         body = msg.html or msg.text or ""
 
         print(extract_urls(body))
-        open_urls(extract_urls(body))
-
-
-def open_urls(urls):
-    for i in urls:
-        if i.startswith("https://"):
-            webbrowser.open(i)
+        # open_urls(extract_urls(body))
+        site_logic.tiny1.verify(extract_urls(body))

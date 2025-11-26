@@ -1,6 +1,13 @@
+import webbrowser
+
 import requests
 
 import handle_users.handle_users as userman
+
+
+def open_urls(urls: set):
+    for i in urls:
+        webbrowser.open(i)
 
 
 class Service:
@@ -12,7 +19,10 @@ class Service:
         self.email_domain = email_domain
         self.uses_code = uses_code
 
-        def verify(self):
+    def verify(self, urls: set):
+        if not self.uses_code:
+            open_urls(urls)
+        else:
             pass
 
 
