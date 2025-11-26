@@ -51,4 +51,5 @@ tinycc = Website_tinycc(
     uses_code=False,
 )
 
-services: set = {tinycc}
+services: frozenset = frozenset([tinycc])
+tayn = {site for site in services if site.sender_email == "noreply@tinycc.com"}

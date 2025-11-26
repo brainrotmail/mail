@@ -52,9 +52,16 @@ def poll_mailserver(HOST, USERNAME, PASSWORD, FOLDER):
 def process_mail(email_bundle: Iterator[MailMessage]):
     for msg in email_bundle:
         body = msg.html or msg.text or ""
+        sender = msg.from_
 
-        # TODO: call functions depending on sender
+        # service_target = {site for site in site_logic.services if site.sender_email == sender}
+        # should return just one site in the set! ^^
+
+        for site in site_logic.services:
+            if site.sender_email == sender:
+                service_target = site
 
         print(extract_urls(body))
         # open_urls(extract_urls(body))
-        site_logic.tinycc.verify(extract_urls(body))
+        specificsite = getattr(site_logic, service_target)
+        specificsite.verify(extract_urls(body))
