@@ -5,11 +5,6 @@ import requests
 import handle_users.handle_users as userman
 
 
-def open_urls(urls: set):
-    for i in urls:
-        webbrowser.open(i)
-
-
 class Service:
     def __init__(
         self, signup_url: str, signup_headers: dict, email_domain: str, uses_code: bool
@@ -21,12 +16,13 @@ class Service:
 
     def verify(self, urls: set):
         if not self.uses_code:
-            open_urls(urls)
+            for i in urls:
+                webbrowser.open(i)
         else:
             pass
 
 
-class Tiny_cc(Service):
+class Website_tinycc(Service):
     def signup(self, receiving_domain):
         signup_url = self.signup_url
         headers = self.signup_headers
@@ -46,11 +42,11 @@ class Tiny_cc(Service):
             f.write(f"{data}, {response}, \n")
 
 
-tiny1 = Tiny_cc(
-    "https://tinycc.com/tiny/signup",
-    {
+tinycc = Website_tinycc(
+    signup_url="https://tinycc.com/tiny/signup",
+    signup_headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
     },
-    "tinycc.com",
-    False,
+    email_domain="tinycc.com",
+    uses_code=False,
 )

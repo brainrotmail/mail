@@ -55,4 +55,4 @@ def process_mail(email_bundle: Iterator[MailMessage]):
 
         print(extract_urls(body))
         # open_urls(extract_urls(body))
-        site_logic.tiny1.verify(extract_urls(body))
+        site_logic.tinycc.verify(extract_urls(body))
