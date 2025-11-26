@@ -12,10 +12,10 @@ class Service:
         self.sender_email = sender_email
         self.uses_code = uses_code
 
-    def verify(self, urls: set, headers):
+    def verify(self, urls: set):
         if not self.uses_code:
             for i in urls:
-                response = requests.get(i, headers=headers)
+                response = requests.get(i, headers=self.headers)
         else:
             pass
 
@@ -52,4 +52,3 @@ tinycc = Website_tinycc(
 )
 
 services: frozenset = frozenset([tinycc])
-tayn = {site for site in services if site.sender_email == "noreply@tinycc.com"}
