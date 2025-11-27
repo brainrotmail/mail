@@ -1,6 +1,6 @@
 import requests
 
-# import handle_users.handle_users as userman
+import handle_users.handle_users as userman
 
 
 class Service:
@@ -34,13 +34,13 @@ class Website_tinycc(Service):
         data = {
             "username": username,
             "email": f"{username}@{receiving_domain}",
-            # "password": password,
+            "password": userman.generate_password(),
         }
 
         response = requests.post(signup_url, headers=headers, data=data)
 
-        # with open("log.txt", "a", encoding="utf-8") as f:
-        #     f.write(f"{data}, {response}, \n")
+        with open("log.txt", "a", encoding="utf-8") as f:
+            f.write(f"{data}, {response}, \n")
 
     def verify(self, urls: set):
         for i in urls:
