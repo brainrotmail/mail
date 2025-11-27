@@ -1,6 +1,8 @@
 import secrets
 import string
 
+import sqlite3
+
 
 def generate_username() -> str:
     alphabet = string.ascii_letters
@@ -20,3 +22,26 @@ def generate_password() -> str:
             break
     return password
 
+
+
+def databaseaddstuff():
+
+    urlplaceholder = "www.example.com"
+
+    username = generate_username()
+    password = generate_password()
+
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS users(
+        username TEXT,
+        password TEXT,
+        website TEXT
+    )
+    """)
+
+    cur.execute("INSERT INTO users VALUES (?, ?, ?)", (username, password, urlplaceholder))
+    con.commit()
+    con.close()

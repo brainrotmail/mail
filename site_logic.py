@@ -21,13 +21,12 @@ class Service:
 
 
 
-
 class Website_tinycc(Service):
     def signup(self, receiving_domain: str):
         signup_url = self.signup_url
         headers = self.headers
 
-        username = userman.generate_username
+        username = userman.generate_username # to do (replace with a signle function generate user, in the gen pass func)
         password = userman.generate_password
 
         data = {
