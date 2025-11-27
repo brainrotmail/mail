@@ -40,6 +40,12 @@ class Website_tinycc(Service):
         with open("log.txt", "a", encoding="utf-8") as f:
             f.write(f"{data}, {response}, \n")
 
+    def verify(self, urls: set):
+        for i in urls:
+            if "https://tinycc.com/tiny/email-register" in i:
+                response = requests.get(i, headers=self.headers)
+                print(response)
+
 
 tinycc = Website_tinycc(
     signup_url="https://tinycc.com/tiny/signup",
