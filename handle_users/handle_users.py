@@ -1,7 +1,6 @@
 import secrets
-import string
-
 import sqlite3
+import string
 
 
 def generate_username() -> str:
@@ -23,25 +22,16 @@ def generate_password() -> str:
     return password
 
 
+def databaseaddstuff(url: str, batch: str) -> str:
+    con = sqlite3.connect("credentials.db")
+    cur = con.cursor()
 
-def databaseaddstuff():
-
-    urlplaceholder = "www.example.com"
+    cur.execute(f"CREATE TABLE IF NOT EXISTS {batch}(username, password, website)")
 
     username = generate_username()
     password = generate_password()
 
-    con = sqlite3.connect("database.db")
-    cur = con.cursor()
-
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-        username TEXT,
-        password TEXT,
-        website TEXT
-    )
-    """)
-
-    cur.execute("INSERT INTO users VALUES (?, ?, ?)", (username, password, urlplaceholder))
+    cur.execute(f"INSERT INTO {batch} VALUES (?, ?, ?)", (username, password, url))
     con.commit()
     con.close()
+    return username
