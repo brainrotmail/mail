@@ -12,13 +12,21 @@ class Service:
         self.sender_email = sender_email
         self.uses_code = uses_code
 
+    def verify(self, urls: set):
+        if not self.uses_code:
+            for i in urls:
+                response = requests.get(i, headers=self.headers)
+        else:
+            pass
+
+
 
 class Website_tinycc(Service):
     def signup(self, receiving_domain: str):
         signup_url = self.signup_url
         headers = self.headers
 
-        username = userman.generate_username
+        username = userman.generate_username # to do (replace with a signle function generate user, in the gen pass func)
         password = userman.generate_password
 
         data = {
