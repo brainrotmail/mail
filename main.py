@@ -1,4 +1,5 @@
 import os
+import threading
 
 from dotenv import load_dotenv
 
@@ -11,7 +12,12 @@ def main():
     USERNAME = os.getenv("MAIL_USERNAME")
     PASSWORD = os.getenv("MAIL_PASSWORD")
     FOLDER = os.getenv("MAIL_FOLDER")
-    handle_email.poll_mailserver(HOST, USERNAME, PASSWORD, FOLDER)
+
+    def killme():
+        handle_email.poll_mailserver(HOST, USERNAME, PASSWORD, FOLDER)
+
+    threading.Thread(target=killme, name="killer").start()
+    print("hi!")
 
 
 if __name__ == "__main__":
