@@ -22,7 +22,7 @@ def generate_password() -> str:
     return password
 
 
-def databaseaddstuff(url: str, batch: str) -> str:
+def databaseaddstuff(url: str, batch: str):
     con = sqlite3.connect("credentials.db")
     cur = con.cursor()
 
@@ -34,4 +34,13 @@ def databaseaddstuff(url: str, batch: str) -> str:
     cur.execute(f"INSERT INTO {batch} VALUES (?, ?, ?)", (username, password, url))
     con.commit()
     con.close()
-    return username
+
+    class User:
+        def __init__(self):
+            self.name = username
+            self.password = password
+
+    def get_user() -> User:
+        return User()
+
+    return get_user()
