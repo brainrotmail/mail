@@ -12,15 +12,6 @@ class Service:
         self.sender_email = sender_email
         self.uses_code = uses_code
 
-    def verify(self, urls: set):
-        if not self.uses_code:
-            for i in urls:
-                response = requests.get(i, headers=self.headers)
-        else:
-            pass
-
-
-
 
 class Website_tinycc(Service):
     def signup(self, receiving_domain: str):
@@ -40,6 +31,12 @@ class Website_tinycc(Service):
 
         with open("log.txt", "a", encoding="utf-8") as f:
             f.write(f"{data}, {response}, \n")
+
+    def verify(self, urls: set):
+        for i in urls:
+            if "https://tinycc.com/tiny/email-register" in i:
+                response = requests.get(i, headers=self.headers)
+                print(response)
 
 
 tinycc = Website_tinycc(

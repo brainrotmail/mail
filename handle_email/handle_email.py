@@ -61,7 +61,9 @@ def process_mail(email_bundle: Iterator[MailMessage]):
             if site.sender_email == sender:
                 service_target = site
 
-        print(extract_urls(body))
-        # open_urls(extract_urls(body))
-        specificsite = getattr(site_logic, service_target)
-        specificsite.verify(extract_urls(body))
+        if not service_target.uses_code:
+            urls = extract_urls(body)
+            print(urls)
+            service_target.verify(urls)
+        else:
+            pass
