@@ -14,6 +14,9 @@ TODO:
 - menu to select these
 - etc
 
+here is a demo recording of the https://github.com/brainrotmail/mail/tree/push-uyylqoptzssl branch:
+https://asciinema.org/a/ZE6FcpTVDM6Wlbz8ReNdr7hM9
+
 
 # Setup instructions:
 Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/):
